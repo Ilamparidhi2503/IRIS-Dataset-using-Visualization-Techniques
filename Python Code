@@ -1,0 +1,41 @@
+import pandas as pd
+
+# Load the dataset
+file_path = '/IRIS.csv'
+df = pd.read_csv(file_path)
+
+# Display the first few rows of the dataset
+print(df.head())
+
+# Display basic statistics
+print(df.describe(include='all'))
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Load the dataset
+file_path = '/IRIS.csv'
+df = pd.read_csv(file_path)
+
+# Display the first few rows of the dataset
+print(df.head())
+
+# Display basic statistics
+print(df.describe(include='all'))
+
+# Set the aesthetic style of the plots
+sns.set(style="whitegrid")
+
+# Pairplot to visualize relationships between features and species
+sns.pairplot(df, hue='species')
+plt.title('Pairplot of IRIS Dataset')
+plt.show()
+
+# Distribution plots for each feature
+features = df.columns[:-1]
+for feature in features:
+    plt.figure(figsize=(8, 6))
+    sns.histplot(data=df, x=feature, hue='species', kde=True, palette='viridis')
+    plt.title(f'Distribution of {feature}')
+    plt.show()
